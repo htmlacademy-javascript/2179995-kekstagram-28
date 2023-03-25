@@ -1,6 +1,5 @@
-import './util.js';
 import { getPictures } from './data.js';
+import { renderThumbnail } from './thumbnail.js';
 
-console.log(
-  getPictures()
-);
+
+renderThumbnail(getPictures());

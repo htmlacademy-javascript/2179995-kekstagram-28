@@ -10,5 +10,21 @@ const getRandomInteger = (a, b) => {
 const getRandomArrayElement = (Array) =>
   Array[getRandomInteger(0, Array.length - 1)];
 
-export { getRandomArrayElement };
-export { getRandomInteger };
+
+// Создание идентификатора с увеличением на единицу
+const createIdGenerator = () => {
+  let lastGeneratedId = 0;
+
+  return () => {
+    lastGeneratedId += 1;
+    return lastGeneratedId;
+  };
+};
+const generateCommentId = createIdGenerator();
+
+
+export {
+  getRandomArrayElement,
+  getRandomInteger,
+  generateCommentId
+};
