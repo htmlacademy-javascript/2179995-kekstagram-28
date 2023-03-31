@@ -20,7 +20,7 @@ const onEscape = (evt) => {
 };
 
 const renderComment = (arrayComment) => {
-  listComments.innerHTML = '';
+
   const commentFragment = document.createDocumentFragment();
   arrayComment.forEach(({ avatar, name, message }) => {
     const comment = itemListComment.cloneNode(true);
@@ -37,6 +37,7 @@ const renderBigPicture = ({ url, likes, comments, description }) => {
   bigPicture.querySelector('.likes-count').textContent = likes;
   bigPicture.querySelector('.comments-count').textContent = comments.length;
   bigPicture.querySelector('.social__caption').textContent = description;
+  listComments.innerHTML = '';
   renderComment(comments);
 };
 
