@@ -26,7 +26,7 @@ const renderComment = (arrayComment) => {
     const comment = itemListComment.cloneNode(true);
     comment.querySelector('.social__picture').src = avatar;
     comment.querySelector('.social__picture').alt = name;
-    comment.querySelector('.social__text').alt = message;
+    comment.querySelector('.social__text').textContent = message;
     commentFragment.append(comment);
   });
   listComments.append(commentFragment);
