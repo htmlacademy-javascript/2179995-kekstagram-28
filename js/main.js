@@ -1,5 +1,6 @@
 import { getPictures } from './data.js';
-import { renderThumbnail } from './thumbnail.js';
+import { renderPictureModal } from './picture-modal.js';
+//import './big-picture.js';
 
+renderPictureModal(getPictures());
 
-renderThumbnail(getPictures());

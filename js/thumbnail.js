@@ -5,13 +5,14 @@ const thumbnailTemplate = document.querySelector('#picture')
 const container = document.querySelector('.pictures');
 
 // Создание миниатюры
-const createThumbnail = ({ url, description, likes, comments }) => {
+const createThumbnail = ({ url, description, likes, comments, id }) => {
   const thumbnail = thumbnailTemplate.cloneNode(true);
   thumbnail.querySelector('.picture__img').src = url; // Путь к миниатюре
   thumbnail.querySelector('.picture__img').alt = description; // Текстовое описание миниатюры
   thumbnail.querySelector('.picture__likes').textContent = likes; // Кол-во лайков
   thumbnail.querySelector('.picture__comments').textContent = comments.length;
   // comments выведет массивы,если хотим видеть кол-во комментариев, то нужно указать длинну массива с комментариями.
+  thumbnail.dataset.thumbnailId = id;
 
   return thumbnail;
 
@@ -28,4 +29,4 @@ const renderThumbnail = (pictures) => {
 };
 
 
-export { renderThumbnail };
+export { renderThumbnail, container };
