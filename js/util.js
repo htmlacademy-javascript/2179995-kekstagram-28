@@ -22,9 +22,14 @@ const createIdGenerator = () => {
 };
 const generateCommentId = createIdGenerator();
 
+// Проверка нажатой клавиши
+const isEscapeKey = (evt) => evt.key === 'Escape';
+const isEnterKey = (evt) => evt.key === 'Enter';
 
 export {
   getRandomArrayElement,
   getRandomInteger,
-  generateCommentId
+  generateCommentId,
+  isEscapeKey,
+  isEnterKey
 };

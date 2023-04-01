@@ -1,7 +1,7 @@
 import {
   getRandomArrayElement,
   getRandomInteger,
-  generateCommentId
+  generateCommentId,
 } from './util.js';
 
 import {
