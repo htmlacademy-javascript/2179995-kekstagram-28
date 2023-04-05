@@ -51,9 +51,6 @@ pristine.addValidator(
   ERROR_TAG_TEXT
 );
 
-
-
-
 const fieldFocus = (field) => {
   field.addEventListener('focus', () => {
     document.removeEventListener('keydown', onEscape);
