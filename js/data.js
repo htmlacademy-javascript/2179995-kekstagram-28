@@ -45,8 +45,7 @@ const createPicture = (index) => ({
 // Создание массива объектов
 const getPictures = () =>
   Array.from(
-    { length: PICTURE_COUNT }, (_, pictureIndex) =>
-    createPicture(pictureIndex + 1)
+    { length: PICTURE_COUNT }, (_, pictureIndex) => createPicture(pictureIndex + 1)
   );
 
 getPictures();
