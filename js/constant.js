@@ -4,6 +4,9 @@ const LIKE_MIN_COUNT = 15;
 const LIKE_MAX_COUNT = 200;
 const COMMENT_COUNT = 20;
 const COMMENTS_PORTION = 5;
+const ERROR_TAG_TEXT = 'В хэштегах допущены ошибки';
+const VALID_SYMBOLS = /^#[a-zа-яё0-9]{1,19}$/i;
+const MAX_HASHTAGS_COUNT = 5;
 const COMMENT_LINES = [
   'Всё отлично!',
   'В целом всё неплохо.Но не всё.',
@@ -40,5 +43,8 @@ export {
   COMMENT_LINES,
   DESCRIPTIONS,
   NAMES,
-  COMMENTS_PORTION
+  COMMENTS_PORTION,
+  ERROR_TAG_TEXT,
+  VALID_SYMBOLS,
+  MAX_HASHTAGS_COUNT
 };
