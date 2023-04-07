@@ -4,9 +4,9 @@ const LIKE_MIN_COUNT = 15;
 const LIKE_MAX_COUNT = 200;
 const COMMENT_COUNT = 20;
 const COMMENTS_PORTION = 5;
-const ERROR_TAG_TEXT = 'В хэштегах допущены ошибки';
-const VALID_SYMBOLS = /^#[a-zа-яё0-9]{1,19}$/i;
-const MAX_HASHTAGS_COUNT = 5;
+const ERROR_TAG_TEXT = 'В хэштегах допущены ошибки'; // сообщение об ошибке при написании хэштегов
+const VALID_SYMBOLS = /^#[a-zа-яё0-9]{1,19}$/i; // допустимые символы
+const MAX_HASHTAGS_COUNT = 5; // макс-ное кол-во хэштегов
 const COMMENT_LINES = [
   'Всё отлично!',
   'В целом всё неплохо.Но не всё.',
@@ -34,6 +34,66 @@ const NAMES = [
   'Олег',
   'Артём',
 ];
+
+// Массив эфектов для фильтров
+const EFFECTS = [
+  {
+    name: 'none',
+    style: 'none',
+    min: 0,
+    max: 100,
+    step: 1,
+    unit: '',
+  },
+  {
+    name: 'chrome',
+    style: 'grayscale',
+    min: 0,
+    max: 1,
+    step: 0.1,
+    unit: '',
+  },
+  {
+    name: 'sepia',
+    style: 'sepia',
+    min: 0,
+    max: 1,
+    step: 0.1,
+    unit: '',
+  },
+  {
+    name: 'marvin',
+    style: 'invert',
+    min: 0,
+    max: 100,
+    step: 1,
+    unit: '%',
+  },
+  {
+    name: 'phobos',
+    style: 'blur',
+    min: 0,
+    max: 3,
+    step: 0.1,
+    unit: 'px',
+  },
+  {
+    name: 'heat',
+    style: 'brightness',
+    min: 1,
+    max: 3,
+    step: 0.1,
+    unit: '',
+  }
+];
+
+// Масштабирввание
+const STEP = 25;
+const MIN_VALUE = 25;
+const MAX_VALUE = 100;
+const DEFAULT_VALUE = 100;
+
+
 export {
   PICTURE_COUNT,
   AVATAR_COUNT,
@@ -46,5 +106,10 @@ export {
   COMMENTS_PORTION,
   ERROR_TAG_TEXT,
   VALID_SYMBOLS,
-  MAX_HASHTAGS_COUNT
+  MAX_HASHTAGS_COUNT,
+  EFFECTS,
+  STEP,
+  MIN_VALUE,
+  MAX_VALUE,
+  DEFAULT_VALUE
 };
