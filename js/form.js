@@ -1,5 +1,7 @@
 import { isEscapeKey, } from './util.js';
 import { ERROR_TAG_TEXT, VALID_SYMBOLS, MAX_HASHTAGS_COUNT } from './constant.js';
+import { resetScale } from './scale.js';
+import { resetEffects } from './effects.js';
 
 const uploadForm = document.querySelector('.img-upload__form');
 const uploadFile = uploadForm.querySelector('#upload-file');
@@ -22,6 +24,8 @@ const onEscape = (evt) => {
     body.classList.remove('modal-open');
     uploadForm.reset();
     pristine.reset();
+    resetScale();
+
   }
 };
 
@@ -93,6 +97,8 @@ const closeImageModal = () => {
   uploadForm.reset();
   pristine.reset();
   focusRemove();
+  resetScale();
+  resetEffects();
 };
 const openImageModal = () => {
   imageOverlay.classList.remove('hidden');
