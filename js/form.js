@@ -11,11 +11,39 @@ const body = document.querySelector('body');
 const fieldHashtags = uploadForm.querySelector('.text__hashtags');
 const fieldСomments = uploadForm.querySelector('.text__description');
 
+const SubmitButtonText = {
+  IDLE: 'Сохранить',
+  SENDING: 'Сохраняю...'
+};
+
 const pristine = new Pristine(uploadForm, {
   classTo: 'img-upload__field-wrapper',
   errorTextParent: 'img-upload__field-wrapper',
   errorTextClass: 'img-upload__field-wrapper__error'
 });
+
+const blockSubmitButton = () => {
+  buttonCloseOverlay.disabled = true;
+  buttonCloseOverlay.textContent = SubmitButtonText.SENDING;
+};
+
+const unblockSubmitButton = () => {
+  buttonCloseOverlay.disabled = false;
+  buttonCloseOverlay.textContent = SubmitButtonText.IDLE;
+};
+
+const setFormSubmit = (cb) => {
+  uploadForm.addEventListener('submit', async (evt) => {
+    evt.preventDefault();
+
+    const isValid = pristine.validate();
+    if (isValid) {
+      blockSubmitButton();
+      await cb(new FormData(uploadForm));
+      unblockSubmitButton();
+    }
+  });
+};
 
 const onEscape = (evt) => {
   if (isEscapeKey(evt)) {
@@ -113,3 +141,5 @@ const editImages = () => {
 };
 
 uploadFile.addEventListener('input', editImages);
+export { setFormSubmit, closeImageModal };
+
