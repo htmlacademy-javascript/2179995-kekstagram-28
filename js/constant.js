@@ -93,6 +93,10 @@ const MIN_VALUE = 25;
 const MAX_VALUE = 100;
 const DEFAULT_VALUE = 100;
 
+// Актуальный адрес сервера
+const BASE_URL = 'https://28.javascript.pages.academy/kekstagram';
+
+const ALERT_SHOW_TIME = 5000;
 
 export {
   PICTURE_COUNT,
@@ -111,5 +115,7 @@ export {
   STEP,
   MIN_VALUE,
   MAX_VALUE,
-  DEFAULT_VALUE
+  DEFAULT_VALUE,
+  BASE_URL,
+  ALERT_SHOW_TIME
 };
