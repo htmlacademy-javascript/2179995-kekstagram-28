@@ -113,7 +113,7 @@ const focusRemove = () => {
   fieldBlurRemove(fieldСomments);
 };
 
-const closeImageModal = () => {
+function closeImageModal() {
   imageOverlay.classList.add('hidden');
   body.classList.remove('modal-open');
   document.removeEventListener('keydown', onEscape);
@@ -122,7 +122,7 @@ const closeImageModal = () => {
   focusRemove();
   resetScale();
   resetEffects();
-};
+}
 const openImageModal = () => {
   imageOverlay.classList.remove('hidden');
   body.classList.add('modal-open');

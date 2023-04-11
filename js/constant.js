@@ -1,4 +1,4 @@
-const PICTURE_COUNT = 25;
+const PICTURES_COUNT = 10;
 const AVATAR_COUNT = 6;
 const LIKE_MIN_COUNT = 15;
 const LIKE_MAX_COUNT = 200;
@@ -98,8 +98,11 @@ const BASE_URL = 'https://28.javascript.pages.academy/kekstagram';
 
 const ALERT_SHOW_TIME = 5000;
 
+// Задержка повторной отправки (для устранения "дребезга")
+const RERENDER_DELAY = 500;
+
 export {
-  PICTURE_COUNT,
+  PICTURES_COUNT,
   AVATAR_COUNT,
   LIKE_MIN_COUNT,
   LIKE_MAX_COUNT,
@@ -117,5 +120,6 @@ export {
   MAX_VALUE,
   DEFAULT_VALUE,
   BASE_URL,
-  ALERT_SHOW_TIME
+  ALERT_SHOW_TIME,
+  RERENDER_DELAY
 };

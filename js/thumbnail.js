@@ -20,6 +20,7 @@ const createThumbnail = ({ url, description, likes, comments, id }) => {
 
 // Принимает сгенерированные объекты
 const renderThumbnail = (pictures) => {
+  container.querySelectorAll('.picture').forEach((picture) => picture.remove());
   const fragment = document.createDocumentFragment(); // Создание "коробки"
   pictures.forEach((picture) => { // Перебор массива
     const thumbnail = createThumbnail(picture); // Создание миниатюры для каждого элемента
