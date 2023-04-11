@@ -98,6 +98,7 @@ const DEFAULT_VALUE = 100;
 // Актуальный адрес сервера
 const BASE_URL = 'https://28.javascript.pages.academy/kekstagram';
 
+//Время задержки оповещения
 const ALERT_SHOW_TIME = 5000;
 
 // Задержка повторной отправки (для устранения "дребезга")
