@@ -101,6 +101,9 @@ const ALERT_SHOW_TIME = 5000;
 // Задержка повторной отправки (для устранения "дребезга")
 const RERENDER_DELAY = 500;
 
+// Массив допустимых расширений
+const FILE_TYPES = ['jpg', 'jpeg', 'png'];
+
 export {
   PICTURES_COUNT,
   AVATAR_COUNT,
@@ -121,5 +124,6 @@ export {
   DEFAULT_VALUE,
   BASE_URL,
   ALERT_SHOW_TIME,
-  RERENDER_DELAY
+  RERENDER_DELAY,
+  FILE_TYPES
 };

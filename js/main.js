@@ -6,6 +6,7 @@ import { showAlert, debounce } from './util.js';
 import { getData, sendData } from './api.js';
 import { showErrorMessage, showSuccessMessage } from './messages-form.js';
 import { getFilteredPictures, init } from './filter.js';
+import './avatar.js';
 
 
 setFormSubmit(async (data) => {

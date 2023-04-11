@@ -77,4 +77,4 @@ const resetEffects = () => {
   updateSlider();
 };
 
-export { resetEffects };
+export { resetEffects, imageUpload };

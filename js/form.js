@@ -136,5 +136,5 @@ const editImages = () => {
 };
 
 uploadFile.addEventListener('input', editImages);
-export { setFormSubmit, closeImageModal, onEscape };
+export { setFormSubmit, closeImageModal, onEscape, uploadFile };
 
