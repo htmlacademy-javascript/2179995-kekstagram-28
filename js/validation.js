@@ -6,7 +6,7 @@ import { ERROR_TAG_TEXT, COMMENTS_ERROR_MESSAGE, VALID_SYMBOLS, MAX_HASHTAGS_COU
 const uploadForm = document.querySelector('.img-upload__form');
 const fieldHashtags = uploadForm.querySelector('.text__hashtags');
 const fieldСomments = uploadForm.querySelector('.text__description');
-const buttonCloseOverlay = uploadForm.querySelector('#upload-cancel');
+const submitButton = document.querySelector('.img-upload__submit');
 
 const SubmitButtonText = {
   IDLE: 'Сохранить',
@@ -56,13 +56,13 @@ pristine.addValidator(
 );
 
 const blockSubmitButton = () => {
-  buttonCloseOverlay.disabled = true;
-  buttonCloseOverlay.textContent = SubmitButtonText.SENDING;
+  submitButton.disabled = true;
+  submitButton.textContent = SubmitButtonText.SENDING;
 };
 
 const unblockSubmitButton = () => {
-  buttonCloseOverlay.disabled = false;
-  buttonCloseOverlay.textContent = SubmitButtonText.IDLE;
+  submitButton.disabled = false;
+  submitButton.textContent = SubmitButtonText.IDLE;
 };
 
 const pristineReset = () => pristine.reset();
