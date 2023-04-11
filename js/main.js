@@ -1,30 +1,23 @@
 /* jshint esversion: 10 */
 import { renderPictureModal } from './picture-modal.js';
 import './form.js';
-import { setFormSubmit, closeImageModal } from './form.js';
+import { setFormSubmit } from './validation.js';
+import { closeImageModal } from './form.js';
 import { showAlert, debounce } from './util.js';
-import { getData, sendData } from './api.js';
-import { showErrorMessage, showSuccessMessage } from './messages-form.js';
+import { getData } from './api.js';
 import { getFilteredPictures, init } from './filter.js';
 import './avatar.js';
+import { RERENDER_DELAY } from './constant.js';
 
+getData()
+  .then((data) => {
+    const debouncedRenderGallery = debounce(renderPictureModal, RERENDER_DELAY);
+    init(data, debouncedRenderGallery);
+    renderPictureModal(getFilteredPictures());
+  })
+  .catch((err) => {
+    showAlert(err.message);
+  });
 
-setFormSubmit(async (data) => {
-  try {
-    await sendData(data);
-    closeImageModal();
-    showSuccessMessage();
-  } catch {
-    showErrorMessage();
-  }
-});
-
-try {
-  const data = await getData();
-  const debounceRenderPictureModal = debounce(renderPictureModal);
-  init(data, debounceRenderPictureModal);
-  renderPictureModal(getFilteredPictures());
-} catch (err) {
-  showAlert(err.message);
-}
+setFormSubmit(closeImageModal);
 
