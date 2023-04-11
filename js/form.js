@@ -48,12 +48,7 @@ const setFormSubmit = (cb) => {
 const onEscape = (evt) => {
   if (isEscapeKey(evt)) {
     evt.preventDefault();
-    imageOverlay.classList.add('hidden');
-    body.classList.remove('modal-open');
-    uploadForm.reset();
-    pristine.reset();
-    resetScale();
-
+    closeImageModal();
   }
 };
 
@@ -141,5 +136,5 @@ const editImages = () => {
 };
 
 uploadFile.addEventListener('input', editImages);
-export { setFormSubmit, closeImageModal };
+export { setFormSubmit, closeImageModal, onEscape };
 
