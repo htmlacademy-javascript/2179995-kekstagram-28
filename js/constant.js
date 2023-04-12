@@ -1,12 +1,14 @@
-const PICTURE_COUNT = 25;
+const PICTURES_COUNT = 10;
 const AVATAR_COUNT = 6;
 const LIKE_MIN_COUNT = 15;
 const LIKE_MAX_COUNT = 200;
 const COMMENT_COUNT = 20;
 const COMMENTS_PORTION = 5;
 const ERROR_TAG_TEXT = 'В хэштегах допущены ошибки'; // сообщение об ошибке при написании хэштегов
+const COMMENTS_ERROR_MESSAGE = 'Максимальная длина комментария 140 символов';
 const VALID_SYMBOLS = /^#[a-zа-яё0-9]{1,19}$/i; // допустимые символы
 const MAX_HASHTAGS_COUNT = 5; // макс-ное кол-во хэштегов
+const MAX_COMMENTS_LENGTH = 140; // Максимальная длина комментария
 const COMMENT_LINES = [
   'Всё отлично!',
   'В целом всё неплохо.Но не всё.',
@@ -96,10 +98,17 @@ const DEFAULT_VALUE = 100;
 // Актуальный адрес сервера
 const BASE_URL = 'https://28.javascript.pages.academy/kekstagram';
 
+//Время задержки оповещения
 const ALERT_SHOW_TIME = 5000;
 
+// Задержка повторной отправки (для устранения "дребезга")
+const RERENDER_DELAY = 500;
+
+// Массив допустимых расширений
+const FILE_TYPES = ['jpg', 'jpeg', 'png'];
+
 export {
-  PICTURE_COUNT,
+  PICTURES_COUNT,
   AVATAR_COUNT,
   LIKE_MIN_COUNT,
   LIKE_MAX_COUNT,
@@ -109,13 +118,17 @@ export {
   NAMES,
   COMMENTS_PORTION,
   ERROR_TAG_TEXT,
+  COMMENTS_ERROR_MESSAGE,
   VALID_SYMBOLS,
   MAX_HASHTAGS_COUNT,
+  MAX_COMMENTS_LENGTH,
   EFFECTS,
   STEP,
   MIN_VALUE,
   MAX_VALUE,
   DEFAULT_VALUE,
   BASE_URL,
-  ALERT_SHOW_TIME
+  ALERT_SHOW_TIME,
+  RERENDER_DELAY,
+  FILE_TYPES
 };

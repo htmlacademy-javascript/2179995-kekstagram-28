@@ -1,4 +1,5 @@
 import { isEscapeKey } from './util.js';
+import { onEscape } from './form.js';
 
 const messageError = document.querySelector('#error').content.querySelector('.error');
 const messageSuccess = document.querySelector('#success').content.querySelector('.success');
@@ -23,6 +24,7 @@ const showErrorMessage = () => {
   message.querySelector('.error__button').addEventListener('click', closeErrorMessage);
   document.addEventListener('keydown', onEscapeError);
   document.addEventListener('click', errorMouseClick, { once: true });
+  document.removeEventListener('keydown', onEscape);
   document.body.append(message);
 };
 
