@@ -2,7 +2,7 @@
 import { renderPictureModal } from './picture-modal.js';
 import './form.js';
 import { setFormSubmit } from './validation.js';
-import { closeImageModal } from './form.js';
+import { onCloseImageModal } from './form.js';
 import { showAlert, debounce } from './util.js';
 import { getData } from './api.js';
 import { getFilteredPictures, init } from './filter.js';
@@ -19,5 +19,5 @@ getData()
     showAlert(err.message);
   });
 
-setFormSubmit(closeImageModal);
+setFormSubmit(onCloseImageModal);
 

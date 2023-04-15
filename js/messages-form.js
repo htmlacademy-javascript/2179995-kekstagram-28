@@ -1,42 +1,43 @@
 import { isEscapeKey } from './util.js';
-import { onEscape } from './form.js';
+import { onModalEscKeydown } from './form.js';
 
-const messageError = document.querySelector('#error').content.querySelector('.error');
-const messageSuccess = document.querySelector('#success').content.querySelector('.success');
+const messageErrorElement = document.querySelector('#error').content.querySelector('.error');
+const messageSuccessElement = document.querySelector('#success').content.querySelector('.success');
 
-const closeErrorMessage = () => {
+const onCloseErrorMessage = () => {
   document.removeEventListener('keydown', onEscapeError);
   const errorContainer = document.querySelector('.error');
   if (errorContainer) {
     errorContainer.remove();
+    document.addEventListener('keydown', onModalEscKeydown);
   }
 };
 
-const errorMouseClick = (evt) => {
+const onErrorMouseClick = (evt) => {
   const errorContainer = document.querySelector('.error__inner');
   if (evt.target !== errorContainer) {
-    closeErrorMessage();
+    onCloseErrorMessage();
   }
 };
 
 const showErrorMessage = () => {
-  const message = messageError.cloneNode(true);
-  message.querySelector('.error__button').addEventListener('click', closeErrorMessage);
+  const message = messageErrorElement.cloneNode(true);
+  message.querySelector('.error__button').addEventListener('click', onCloseErrorMessage);
   document.addEventListener('keydown', onEscapeError);
-  document.addEventListener('click', errorMouseClick, { once: true });
-  document.removeEventListener('keydown', onEscape);
+  document.addEventListener('click', onErrorMouseClick, { once: true });
+  document.removeEventListener('keydown', onModalEscKeydown);
   document.body.append(message);
 };
 
 function onEscapeError(evt) {
   if (isEscapeKey(evt)) {
     evt.preventDefault();
-    closeErrorMessage();
+    onCloseErrorMessage();
   }
 }
 
 
-const closeSuccessMessage = () => {
+const onCloseSuccessMessage = () => {
   document.removeEventListener('keydown', onEscapeSuccess);
   const successContainer = document.querySelector('.success');
   if (successContainer) {
@@ -44,18 +45,18 @@ const closeSuccessMessage = () => {
   }
 };
 
-const successMouseClick = (evt) => {
+const onSuccessMouseClick = (evt) => {
   const successContainer = document.querySelector('.success__inner');
   if (evt.target !== successContainer) {
-    closeSuccessMessage();
+    onCloseSuccessMessage();
   }
 };
 
 const showSuccessMessage = () => {
-  const message = messageSuccess.cloneNode(true);
-  message.querySelector('.success__button').addEventListener('click', closeSuccessMessage);
+  const message = messageSuccessElement.cloneNode(true);
+  message.querySelector('.success__button').addEventListener('click', onCloseSuccessMessage);
   document.addEventListener('keydown', onEscapeSuccess);
-  document.addEventListener('click', successMouseClick, { once: true });
+  document.addEventListener('click', onSuccessMouseClick, { once: true });
   document.body.append(message);
 };
 
@@ -63,7 +64,7 @@ const showSuccessMessage = () => {
 function onEscapeSuccess(evt) {
   if (isEscapeKey(evt)) {
     evt.preventDefault();
-    closeSuccessMessage();
+    onCloseSuccessMessage();
   }
 }
 

@@ -1,25 +1,25 @@
 import { EFFECTS } from './constant.js';
 
-const imageUpload = document.querySelector('.img-upload__preview img');
-const effects = document.querySelector('.effects');
-const effectSlider = document.querySelector('.effect-level__slider');
-const sliderWrapper = document.querySelector('.img-upload__effect-level');
-const effectLevel = document.querySelector('.effect-level__value');
+const imageUploadElement = document.querySelector('.img-upload__preview img');
+const effectsElement = document.querySelector('.effects');
+const effectSliderElement = document.querySelector('.effect-level__slider');
+const sliderWrapperElement = document.querySelector('.img-upload__effect-level');
+const effectLevelElement = document.querySelector('.effect-level__value');
 
 const DEFAULT_EFFECT = EFFECTS[0];
 let chosenEffect = DEFAULT_EFFECT;
 const isDefault = () => chosenEffect === DEFAULT_EFFECT;
 
 const openSlider = () => {
-  sliderWrapper.classList.remove('hidden');
+  sliderWrapperElement.classList.remove('hidden');
 };
 
 const closeSlider = () => {
-  sliderWrapper.classList.add('hidden');
+  sliderWrapperElement.classList.add('hidden');
 };
 
 const updateSlider = () => {
-  effectSlider.noUiSlider.updateOptions(
+  effectSliderElement.noUiSlider.updateOptions(
     {
       range: {
         min: chosenEffect.min,
@@ -36,28 +36,28 @@ const updateSlider = () => {
   }
 };
 
-const effectsChange = (evt) => {
+const onEffectsChange = (evt) => {
   if (!evt.target.classList.contains('effects__radio')) {
     return;
   }
   chosenEffect = EFFECTS.find((effect) => effect.name === evt.target.value);
-  imageUpload.className = `effects__preview--${chosenEffect.name}`;
+  imageUploadElement.className = `effects__preview--${chosenEffect.name}`;
   updateSlider();
 };
 
 const onUpdateSlider = () => {
-  const sliderValue = effectSlider.noUiSlider.get();
+  const sliderValue = effectSliderElement.noUiSlider.get();
 
   if (isDefault()) {
-    imageUpload.style.filter = DEFAULT_EFFECT.style;
+    imageUploadElement.style.filter = DEFAULT_EFFECT.style;
   } else {
-    imageUpload.style.filter = `${chosenEffect.style}(${sliderValue}${chosenEffect.unit})`;
+    imageUploadElement.style.filter = `${chosenEffect.style}(${sliderValue}${chosenEffect.unit})`;
   }
 
-  effectLevel.value = sliderValue;
+  effectLevelElement.value = sliderValue;
 };
 
-noUiSlider.create(effectSlider, {
+noUiSlider.create(effectSliderElement, {
   range: {
     min: DEFAULT_EFFECT.min,
     max: DEFAULT_EFFECT.max
@@ -69,12 +69,12 @@ noUiSlider.create(effectSlider, {
 
 closeSlider();
 
-effects.addEventListener('change', effectsChange);
-effectSlider.noUiSlider.on('update', onUpdateSlider);
+effectsElement.addEventListener('change', onEffectsChange);
+effectSliderElement.noUiSlider.on('update', onUpdateSlider);
 
 const resetEffects = () => {
   chosenEffect = DEFAULT_EFFECT;
   updateSlider();
 };
 
-export { resetEffects, imageUpload };
+export { resetEffects, imageUploadElement };
