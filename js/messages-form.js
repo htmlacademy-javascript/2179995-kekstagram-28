@@ -36,7 +36,6 @@ function onEscapeError(evt) {
   }
 }
 
-
 const onCloseSuccessMessage = () => {
   document.removeEventListener('keydown', onEscapeSuccess);
   const successContainer = document.querySelector('.success');
@@ -59,7 +58,6 @@ const showSuccessMessage = () => {
   document.addEventListener('click', onSuccessMouseClick, { once: true });
   document.body.append(message);
 };
-
 
 function onEscapeSuccess(evt) {
   if (isEscapeKey(evt)) {
