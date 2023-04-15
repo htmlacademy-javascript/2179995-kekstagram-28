@@ -2,7 +2,6 @@ import { isEscapeKey, } from './util.js';
 import { pristineReset } from './validation.js';
 import { resetScale } from './scale.js';
 import { resetEffects } from './effects.js';
-//import { loadUserPhoto } from './avatar.js';
 
 const uploadFormElement = document.querySelector('.img-upload__form');
 const uploadFileElement = uploadFormElement.querySelector('#upload-file');
@@ -50,7 +49,6 @@ function onCloseImageModal() {
   resetEffects();
 }
 
-
 const openImageModal = () => {
   imageOverlayElement.classList.remove('hidden');
   bodyElement.classList.add('modal-open');
@@ -62,12 +60,12 @@ const openImageModal = () => {
   //loadUserPhoto();
 };
 
-
 const editImages = () => {
   openImageModal();
 };
 
 uploadFileElement.addEventListener('input', editImages);
 buttonCloseOverlayElement.addEventListener('click', onCloseImageModal);
+
 export { onCloseImageModal, onModalEscKeydown, uploadFileElement };
 

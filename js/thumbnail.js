@@ -29,5 +29,4 @@ const renderThumbnail = (pictures) => {
   containerElement.append(fragment); // Добавляет фрагмент в контейнер
 };
 
-
 export { renderThumbnail, containerElement };
