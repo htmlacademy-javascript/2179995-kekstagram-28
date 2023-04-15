@@ -74,7 +74,7 @@ const ALERT_SHOW_TIME = 5000;
 const RERENDER_DELAY = 500;
 
 // Массив допустимых расширений
-const FILE_TYPES = ['jpg', 'jpeg', 'png', 'webp', 'svg'];
+const FILE_TYPES = ['jpg', 'jpeg', 'png'];
 
 export {
   PICTURES_COUNT,

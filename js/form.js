@@ -2,7 +2,7 @@ import { isEscapeKey, } from './util.js';
 import { pristineReset } from './validation.js';
 import { resetScale } from './scale.js';
 import { resetEffects } from './effects.js';
-import { loadUserPhoto } from './avatar.js';
+//import { loadUserPhoto } from './avatar.js';
 
 const uploadFormElement = document.querySelector('.img-upload__form');
 const uploadFileElement = uploadFormElement.querySelector('#upload-file');
@@ -59,7 +59,7 @@ const openImageModal = () => {
   buttonCloseOverlayElement.addEventListener('click', onCloseImageModal);
   deleteEscKeydownForTextField();
   deleteEscKeydownForHash();
-  loadUserPhoto();
+  //loadUserPhoto();
 };
 
 
