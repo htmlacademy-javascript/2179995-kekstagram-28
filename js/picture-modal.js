@@ -1,5 +1,5 @@
 import { openBigPicture } from './big-picture.js';
-import { renderThumbnail, container } from './thumbnail.js';
+import { renderThumbnail, containerElement } from './thumbnail.js';
 
 let pictures = [];
 
@@ -20,7 +20,7 @@ const renderPictures = (evt) => {
 const renderPictureModal = (currentPictures) => {
   pictures = currentPictures;
   renderThumbnail(pictures);
-  container.addEventListener('click', renderPictures);
+  containerElement.addEventListener('click', renderPictures);
 };
 
 export { renderPictureModal };

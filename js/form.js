@@ -2,81 +2,72 @@ import { isEscapeKey, } from './util.js';
 import { pristineReset } from './validation.js';
 import { resetScale } from './scale.js';
 import { resetEffects } from './effects.js';
+import { loadUserPhoto } from './avatar.js';
 
-const uploadForm = document.querySelector('.img-upload__form');
-const uploadFile = uploadForm.querySelector('#upload-file');
-const imageOverlay = uploadForm.querySelector('.img-upload__overlay');
-const buttonCloseOverlay = uploadForm.querySelector('#upload-cancel');
-const body = document.querySelector('body');
-const fieldHashtags = uploadForm.querySelector('.text__hashtags');
-const fieldСomments = uploadForm.querySelector('.text__description');
+const uploadFormElement = document.querySelector('.img-upload__form');
+const uploadFileElement = uploadFormElement.querySelector('#upload-file');
+const imageOverlayElement = uploadFormElement.querySelector('.img-upload__overlay');
+const buttonCloseOverlayElement = uploadFormElement.querySelector('#upload-cancel');
+const bodyElement = document.querySelector('body');
+const fieldHashtagsElement = uploadFormElement.querySelector('.text__hashtags');
+const fieldCommentsElement = uploadFormElement.querySelector('.text__description');
 
-const onEscape = (evt) => {
+const onModalEscKeydown = (evt) => {
   if (isEscapeKey(evt)) {
     evt.preventDefault();
-    closeImageModal();
+    onCloseImageModal();
   }
 };
 
-const fieldFocus = (field) => {
-  field.addEventListener('focus', () => {
-    document.removeEventListener('keydown', onEscape);
+const deleteEscKeydownForHash = () => {
+  fieldHashtagsElement.addEventListener('focus', () => {
+    document.removeEventListener('keydown', onModalEscKeydown);
+  });
+
+  fieldHashtagsElement.addEventListener('blur', () => {
+    document.addEventListener('keydown', onModalEscKeydown);
   });
 };
 
-const fieldBlur = (field) => {
-  field.addEventListener('blur', () => {
-    document.addEventListener('keydown', onEscape);
+const deleteEscKeydownForTextField = () => {
+  fieldCommentsElement.addEventListener('focus', () => {
+    document.removeEventListener('keydown', onModalEscKeydown);
+  });
+
+  fieldCommentsElement.addEventListener('blur', () => {
+    document.addEventListener('keydown', onModalEscKeydown);
   });
 };
 
-const fieldFocusRemove = (field) => {
-  field.removeEventListener('focus', () => {
-    document.removeEventListener('keydown', onEscape);
-  });
-};
-const fieldBlurRemove = (field) => {
-  field.removeEventListener('blur', () => {
-    document.addEventListener('keydown', onEscape);
-  });
-};
-
-const focus = () => {
-  fieldFocus(fieldHashtags);
-  fieldBlur(fieldHashtags);
-  fieldFocus(fieldСomments);
-  fieldBlur(fieldСomments);
-};
-const focusRemove = () => {
-  fieldFocusRemove(fieldHashtags);
-  fieldBlurRemove(fieldHashtags);
-  fieldFocusRemove(fieldСomments);
-  fieldBlurRemove(fieldСomments);
-};
-
-function closeImageModal() {
-  imageOverlay.classList.add('hidden');
-  body.classList.remove('modal-open');
-  document.removeEventListener('keydown', onEscape);
-  uploadForm.reset();
+function onCloseImageModal() {
+  imageOverlayElement.classList.add('hidden');
+  bodyElement.classList.remove('modal-open');
+  document.removeEventListener('keydown', onModalEscKeydown);
+  buttonCloseOverlayElement.removeEventListener('click', onCloseImageModal);
+  uploadFormElement.reset();
   pristineReset();
-  focusRemove();
   resetScale();
   resetEffects();
 }
+
+
 const openImageModal = () => {
-  imageOverlay.classList.remove('hidden');
-  body.classList.add('modal-open');
-  document.addEventListener('keydown', onEscape);
-  buttonCloseOverlay.addEventListener('click', closeImageModal);
-  focus();
+  imageOverlayElement.classList.remove('hidden');
+  bodyElement.classList.add('modal-open');
+  document.addEventListener('keydown', onModalEscKeydown);
+  document.body.style.overflowY = 'hidden'; // Помогает убрать двойной scroll
+  buttonCloseOverlayElement.addEventListener('click', onCloseImageModal);
+  deleteEscKeydownForTextField();
+  deleteEscKeydownForHash();
+  loadUserPhoto();
 };
+
 
 const editImages = () => {
   openImageModal();
 };
 
-uploadFile.addEventListener('input', editImages);
-
-export { closeImageModal, onEscape, uploadFile };
+uploadFileElement.addEventListener('input', editImages);
+buttonCloseOverlayElement.addEventListener('click', onCloseImageModal);
+export { onCloseImageModal, onModalEscKeydown, uploadFileElement };
 

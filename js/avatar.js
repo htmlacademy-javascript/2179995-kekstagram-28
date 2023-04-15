@@ -1,14 +1,18 @@
-import { imageUpload } from './effects.js';
-import { uploadFile } from './form.js';
+import { imageUploadElement } from './effects.js';
+import { uploadFileElement } from './form.js';
 import { FILE_TYPES } from './constant.js';
 
-uploadFile.addEventListener('change', () => {
-  const file = uploadFile.files[0];
-  const fileName = file.name.toLowerCase();
+const effectsElement = document.querySelectorAll('.effects__preview');
 
+const loadUserPhoto = () => {
+  const file = uploadFileElement.files[0];
+  const fileName = file.name.toLowerCase();
   const matches = FILE_TYPES.some((it) => fileName.endsWith(it));
 
   if (matches) {
-    imageUpload.src = URL.createObjectURL(file);
+    imageUploadElement.src = URL.createObjectURL(file);
+    effectsElement.forEach((item) => (item.style.backgroundImage = `url('${imageUploadElement.src}')`));
   }
-});
+};
+
+export { loadUserPhoto };

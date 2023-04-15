@@ -1,12 +1,12 @@
 // Шаблон изображения и его содержимое
-const thumbnailTemplate = document.querySelector('#picture')
+const thumbnailTemplateElement = document.querySelector('#picture')
   .content.querySelector('.picture');
 // Контейнер для шаблона
-const container = document.querySelector('.pictures');
+const containerElement = document.querySelector('.pictures');
 
 // Создание миниатюры
 const createThumbnail = ({ url, description, likes, comments, id }) => {
-  const thumbnail = thumbnailTemplate.cloneNode(true);
+  const thumbnail = thumbnailTemplateElement.cloneNode(true);
   thumbnail.querySelector('.picture__img').src = url; // Путь к миниатюре
   thumbnail.querySelector('.picture__img').alt = description; // Текстовое описание миниатюры
   thumbnail.querySelector('.picture__likes').textContent = likes; // Кол-во лайков
@@ -20,14 +20,14 @@ const createThumbnail = ({ url, description, likes, comments, id }) => {
 
 // Принимает сгенерированные объекты
 const renderThumbnail = (pictures) => {
-  container.querySelectorAll('.picture').forEach((picture) => picture.remove());
+  containerElement.querySelectorAll('.picture').forEach((picture) => picture.remove());
   const fragment = document.createDocumentFragment(); // Создание "коробки"
   pictures.forEach((picture) => { // Перебор массива
     const thumbnail = createThumbnail(picture); // Создание миниатюры для каждого элемента
     fragment.append(thumbnail); // Добавляет миниатюры в фрагмент ("коробку")
   });
-  container.append(fragment); // Добавляет фрагмент в контейнер
+  containerElement.append(fragment); // Добавляет фрагмент в контейнер
 };
 
 
-export { renderThumbnail, container };
+export { renderThumbnail, containerElement };

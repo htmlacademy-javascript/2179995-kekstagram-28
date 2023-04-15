@@ -9,8 +9,8 @@ let currentFilter = Filter.DEFAULT;
 let pictures = [];
 
 const filterElement = document.querySelector('.img-filters');
-const filtersForm = document.querySelector('.img-filters__form');
-const filterButtons = filtersForm.querySelectorAll('.img-filters__button');
+const filtersFormElement = document.querySelector('.img-filters__form');
+const filterButtonsElement = filtersFormElement.querySelectorAll('.img-filters__button');
 
 const sortRandomly = () => Math.random() - 0.5;
 
@@ -29,8 +29,8 @@ const getFilteredPictures = () => {
 };
 
 const setOnFilterClick = (callback) => {
-  filtersForm.addEventListener('click', (evt) => {
-    filterButtons.forEach((item) => item.classList.remove('img-filters__button--active'));
+  filtersFormElement.addEventListener('click', (evt) => {
+    filterButtonsElement.forEach((item) => item.classList.remove('img-filters__button--active'));
     evt.target.classList.add('img-filters__button--active');
     currentFilter = evt.target.id;
     callback(getFilteredPictures());
