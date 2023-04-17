@@ -71,10 +71,10 @@ const renderBigPicture = ({ url, likes, comments, description }) => {
   loadComments();
 };
 
-const closeBigPicture = () => {
+const onCloseBigPicture = () => {
   bigPictureElement.classList.add('hidden');
   bodyElement.classList.remove('modal-open');
-  closeButtonElement.removeEventListener('click', closeBigPicture);
+  closeButtonElement.removeEventListener('click', onCloseBigPicture);
   document.removeEventListener('keydown', onPopupEscKeydown);
   commentsLoaderElement.removeEventListener('click', onCommentsLoaderButtonClick);
   commentsShow = 0;
@@ -84,7 +84,7 @@ const closeBigPicture = () => {
 const openBigPicture = (picture) => {
   bigPictureElement.classList.remove('hidden');
   document.querySelector('body').classList.add('modal-open');
-  closeButtonElement.addEventListener('click', closeBigPicture);
+  closeButtonElement.addEventListener('click', onCloseBigPicture);
   document.addEventListener('keydown', onPopupEscKeydown);
   commentsLoaderElement.addEventListener('click', onCommentsLoaderButtonClick);
 
