@@ -1,4 +1,9 @@
 import { PICTURES_COUNT } from './constant.js';
+
+const filterElement = document.querySelector('.img-filters');
+const filtersFormElement = document.querySelector('.img-filters__form');
+const filterButtonsElement = filtersFormElement.querySelectorAll('.img-filters__button');
+
 const Filter = {
   DEFAULT: 'filter-default',
   RANDOM: 'filter-random',
@@ -7,10 +12,6 @@ const Filter = {
 
 let currentFilter = Filter.DEFAULT;
 let pictures = [];
-
-const filterElement = document.querySelector('.img-filters');
-const filtersFormElement = document.querySelector('.img-filters__form');
-const filterButtonsElement = filtersFormElement.querySelectorAll('.img-filters__button');
 
 const sortRandomly = () => Math.random() - 0.5;
 

@@ -57,15 +57,13 @@ const openImageModal = () => {
   buttonCloseOverlayElement.addEventListener('click', onCloseImageModal);
   deleteEscKeydownForTextField();
   deleteEscKeydownForHash();
-  //loadUserPhoto();
 };
 
-const editImages = () => {
+const onFileUpload = () => {
   openImageModal();
 };
 
-uploadFileElement.addEventListener('input', editImages);
+uploadFileElement.addEventListener('input', onFileUpload);
 buttonCloseOverlayElement.addEventListener('click', onCloseImageModal);
 
 export { onCloseImageModal, onModalEscKeydown, uploadFileElement };
-
